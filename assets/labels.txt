@@ -3,4 +3,3 @@ Happy
 Neutral
 Sad
 Surprise
-NaN
