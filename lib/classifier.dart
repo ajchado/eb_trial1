@@ -9,7 +9,7 @@ class Classifier {
     var inputImage = File(image.path);
 
     ImageProcessor imageProcessor = ImageProcessorBuilder()
-        .add(ResizeOp(300, 300, ResizeMethod.BILINEAR))
+        .add(ResizeOp(224, 224, ResizeMethod.BILINEAR))
         .add(NormalizeOp(0, 255))
         .build();
 
@@ -20,7 +20,7 @@ class Classifier {
         TensorBuffer.createFixedSize(<int>[1, 127], TfLiteType.float32);
 
     try {
-      Interpreter interpreter = await Interpreter.fromAsset("yourmodel.tflite");
+      Interpreter interpreter = await Interpreter.fromAsset("b0_tflite");
       interpreter.run(tensorImage.buffer, probabilityBuffer.buffer);
     } catch (e) {
       print("Error loading or running model");
