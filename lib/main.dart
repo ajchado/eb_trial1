@@ -96,8 +96,8 @@ class _HomeState extends State<Home> {
                             onPressed: () async {
                               image = await picker.pickImage(
                                   source: ImageSource.camera,
-                                  maxHeight: 300,
-                                  maxWidth: 300,
+                                  maxHeight: 224,
+                                  maxWidth: 224,
                                   imageQuality: 100);
 
                               final outputs =

@@ -19,12 +19,8 @@ class Classifier {
     TensorBuffer probabilityBuffer =
         TensorBuffer.createFixedSize(<int>[1, 127], TfLiteType.float32);
 
-    try {
-      Interpreter interpreter = await Interpreter.fromAsset("b0_tflite");
-      interpreter.run(tensorImage.buffer, probabilityBuffer.buffer);
-    } catch (e) {
-      print("Error loading or running model");
-    }
+    final interpreter = await Interpreter.fromAsset('yourmodel.tflite');
+    interpreter.run(tensorImage.buffer, probabilityBuffer.buffer);
 
     List<String> labels = await FileUtil.loadLabels("assets/labels.txt");
     SequentialProcessor<TensorBuffer> probabilityProcessor =
