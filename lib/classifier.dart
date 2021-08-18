@@ -19,7 +19,7 @@ class Classifier {
     TensorBuffer probabilityBuffer =
         TensorBuffer.createFixedSize(<int>[1, 127], TfLiteType.float32);
 
-    final interpreter = await Interpreter.fromAsset('yourmodel.tflite');
+    Interpreter interpreter = await Interpreter.fromAsset('b0_tflite');
     interpreter.run(tensorImage.buffer, probabilityBuffer.buffer);
 
     List<String> labels = await FileUtil.loadLabels("assets/labels.txt");
