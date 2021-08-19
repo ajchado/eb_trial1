@@ -17,7 +17,7 @@ class Classifier {
     tensorImage = imageProcessor.process(tensorImage);
 
     TensorBuffer probabilityBuffer =
-        TensorBuffer.createFixedSize(<int>[1, 127], TfLiteType.float32);
+        TensorBuffer.createFixedSize(<int>[1, 5], TfLiteType.float32);
 
     Interpreter interpreter = await Interpreter.fromAsset('b0_tflite');
     interpreter.run(tensorImage.buffer, probabilityBuffer.buffer);
